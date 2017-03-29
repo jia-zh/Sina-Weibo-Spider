@@ -333,9 +333,9 @@ public class MySQLDBHelper {
 				Object[] insertPars = { weiboModel.getId(),
 						                weiboModel.getUserid(),
 						                weiboModel.getContent(),
-						                weiboModel.getLike(),
-						                weiboModel.getTransfer(),
-						                weiboModel.getComment(),
+						                weiboModel.getLikes(),
+						                weiboModel.getTransfers(),
+						                weiboModel.getComments(),
 						                weiboModel.getTime(),
 						                weiboModel.getPlatform(),
 						                weiboModel.getRepostusers(),
@@ -344,7 +344,17 @@ public class MySQLDBHelper {
 				System.out.println("插入1条微博！");
 			}
 			else {
-				System.out.println("微博已存在！");
+				String updateSql = "update weibo set userid =?,content =?,likes=?,transfers=?,comments=?,time=?,platform=? where id = ?";
+				Object[] insertPars = { weiboModel.getUserid(),
+						                weiboModel.getContent(),
+						                weiboModel.getLikes(),
+						                weiboModel.getTransfers(),
+						                weiboModel.getComments(),
+						                weiboModel.getTime(),
+						                weiboModel.getPlatform(),
+						                weiboModel.getId()};
+				inserts = ExecuteUpdate(connection,updateSql,insertPars);
+				System.out.println("更新1条微博！");
 			}
 		} catch (Exception sqlE) {
 			// TODO Auto-generated catch block
@@ -394,8 +404,8 @@ public class MySQLDBHelper {
 			}
 			else{
 				String updateSql = "insert into weibo (id, repostusers) values (?, ?)";
-				Object[] updatePars = { weiboModel.getRepostusers(),
-										weiboModel.getId()};
+				Object[] updatePars = { weiboModel.getId(),
+						                weiboModel.getRepostusers()};
 				inserts = ExecuteUpdate(connection,updateSql,updatePars);
 				System.out.println("插入1条微博！");
 			}
@@ -448,8 +458,8 @@ public class MySQLDBHelper {
 			}
 			else{
 				String updateSql = "insert into weibo (id, commentusers) values (?, ?)";
-				Object[] updatePars = { weiboModel.getCommentusers(),
-										weiboModel.getId()};
+				Object[] updatePars = { weiboModel.getId(),
+										weiboModel.getCommentusers()};
 				inserts = ExecuteUpdate(connection,updateSql,updatePars);
 				System.out.println("插入1条微博！");
 			}

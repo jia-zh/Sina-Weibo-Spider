@@ -275,9 +275,9 @@ public class WeiboCrawler extends BreadthCrawler {
 		            weiboModel.setId(userID + weiboId);
 		            weiboModel.setUserid(userID);
 		            weiboModel.setContent(content);
-		            weiboModel.setLike(like);
-		            weiboModel.setTransfer(transfer);
-		            weiboModel.setComment(comment);
+		            weiboModel.setLikes(like);
+		            weiboModel.setTransfers(transfer);
+		            weiboModel.setComments(comment);
 		            weiboModel.setTime(time);
 		            weiboModel.setPlatform(platform);
 		            MySQLDBHelper.inserWeiboInfor(connection, weiboModel);

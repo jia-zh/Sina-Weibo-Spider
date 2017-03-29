@@ -1,0 +1,38 @@
+-- Table "user" DDL
+
+CREATE TABLE `user` (
+  `id` varchar(100) NOT NULL,
+  `nickname` varchar(500) DEFAULT NULL,
+  `birthday` varchar(500) DEFAULT NULL,
+  `gender` varchar(500) DEFAULT NULL,
+  `marriage` varchar(500) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
+  `signature` varchar(500) DEFAULT NULL,
+  `weibo_num` varchar(500) DEFAULT NULL,
+  `tags` varchar(500) DEFAULT NULL,
+  `follows` varchar(500) DEFAULT NULL,
+  `follows_num` varchar(50) DEFAULT NULL,
+  `fans` varchar(500) DEFAULT NULL,
+  `fans_num` varchar(50) DEFAULT NULL,
+  `homeUrl` varchar(500) DEFAULT NULL,
+  `profile` varchar(1000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+-- Table "weibo" DDL
+
+CREATE TABLE `weibo` (
+  `id` varchar(100) NOT NULL,
+  `userid` varchar(100) DEFAULT NULL,
+  `content` text,
+  `likes` varchar(100) DEFAULT NULL,
+  `transfers` varchar(100) DEFAULT NULL,
+  `comments` varchar(100) DEFAULT NULL,
+  `time` varchar(100) DEFAULT NULL,
+  `platform` varchar(100) DEFAULT NULL,
+  `repostusers` text,
+  `commentusers` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

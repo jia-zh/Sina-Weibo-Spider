@@ -4,9 +4,9 @@ public class WeiboModel {
 	String id;
 	String userid;
 	String content;
-	String like;
-	String transfer;
-	String comment;
+	String likes;
+	String transfers;
+	String comments;
 	String time;
 	String platform;
 	String repostusers;
@@ -29,23 +29,23 @@ public class WeiboModel {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getLike() {
-		return like;
+	public String getLikes() {
+		return likes;
 	}
-	public void setLike(String like) {
-		this.like = like;
+	public void setLikes(String likes) {
+		this.likes = likes;
 	}
-	public String getTransfer() {
-		return transfer;
+	public String getTransfers() {
+		return transfers;
 	}
-	public void setTransfer(String transfer) {
-		this.transfer = transfer;
+	public void setTransfers(String transfers) {
+		this.transfers = transfers;
 	}
-	public String getComment() {
-		return comment;
+	public String getComments() {
+		return comments;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setComments(String comments) {
+		this.comments = comments;
 	}
 	public String getTime() {
 		return time;
@@ -71,5 +71,6 @@ public class WeiboModel {
 	public void setCommentusers(String commentusers) {
 		this.commentusers = commentusers;
 	}
+	
 	
 }
