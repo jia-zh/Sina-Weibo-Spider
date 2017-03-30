@@ -290,7 +290,7 @@ public class WeiboCrawler extends BreadthCrawler {
         	String weiboId = page.getMetaData("weiboID");
         	for (int i = 2; i < reposts.size(); i++) {
 	        	String repostUsers = reposts.select("div.c").get(i).select("a").get(0).text();
-	        	if(!repostUsers.contains("返回") || !repostUsers.contains("查看更多热门")){
+	        	if(!repostUsers.contains("返回") && !repostUsers.contains("查看更多热门")){
 		        	WeiboModel weiboModel = new WeiboModel();
 		            weiboModel.setId(userID + weiboId);
 		            weiboModel.setRepostusers(repostUsers);
@@ -304,7 +304,7 @@ public class WeiboCrawler extends BreadthCrawler {
         	String weiboId = page.getMetaData("weiboID");
         	for (int i = 2; i < comments.size(); i++) {
         		String commentUsers = comments.select("div.c").get(i).select("a").get(0).text();
-        		if(!commentUsers.contains("返回") || !commentUsers.contains("查看更多热门")){
+        		if(!commentUsers.contains("返回") && !commentUsers.contains("查看更多热门")){
     	        	WeiboModel weiboModel = new WeiboModel();
     	            weiboModel.setId(userID + weiboId);
     	            weiboModel.setCommentusers(commentUsers);

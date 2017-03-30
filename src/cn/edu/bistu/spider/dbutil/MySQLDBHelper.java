@@ -130,7 +130,7 @@ public class MySQLDBHelper {
 						                userModel.getProfile(),
 						                userModel.getId()};
 				inserts = ExecuteUpdate(connection,updateSql,updatePars);
-				System.out.println("更新1个用户！");
+				System.out.println("更新1个用户的基本信息！");
 			}
 		} catch (Exception sqlE) {
 			// TODO Auto-generated catch block
@@ -156,7 +156,7 @@ public class MySQLDBHelper {
 				Object[] updatePars = { userModel.getTags(),
 										userModel.getId()};
 				inserts = ExecuteUpdate(connection,updateSql,updatePars);
-				System.out.println("更新1个用户！");
+				System.out.println("更新1个用户的标签信息！");
 			}
 			else{
 				String updateSql = "insert into user (id, tags) values (?, ?)";
@@ -191,7 +191,7 @@ public class MySQLDBHelper {
 						                userModel.getFansNum(),
 										userModel.getId()};
 				inserts = ExecuteUpdate(connection,updateSql,updatePars);
-				System.out.println("更新1个用户！");
+				System.out.println("更新1个用户的微博数目、粉丝数目、关注者数目！");
 			}
 			else{
 				String updateSql = "insert into user (id, weibo_num, follows_num,fans_num) values (?, ?, ?, ?)";
@@ -231,14 +231,15 @@ public class MySQLDBHelper {
 						Object[] updatePars = { userModel.getFans(),
 												userModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
-						System.out.println("更新1个用户！");
+						System.out.println("更新1个用户的粉丝！");
 					}
 					if(!fans.contains(userModel.getFans())){
 						String newFans = fans + "," + userModel.getFans();
 						String updateSql = "update user set fans = ? where id = ?";
 						Object[] updatePars = { newFans,
 												userModel.getId()};
-						inserts = ExecuteUpdate(connection,updateSql,updatePars);						
+						inserts = ExecuteUpdate(connection,updateSql,updatePars);
+						System.out.println("更新1个用户的粉丝！");
 					}
 				}
 				else {
@@ -246,7 +247,7 @@ public class MySQLDBHelper {
 					Object[] updatePars = { userModel.getFans(),
 											userModel.getId()};
 					inserts = ExecuteUpdate(connection,updateSql,updatePars);
-					System.out.println("更新1个用户！");
+					System.out.println("更新1个用户的粉丝！");
 				}
 			}
 			else{
@@ -284,7 +285,8 @@ public class MySQLDBHelper {
 						String updateSql = "update user set follows = ? where id = ?";
 						Object[] updatePars = { userModel.getFollows(),
 												userModel.getId()};
-						inserts = ExecuteUpdate(connection,updateSql,updatePars);						
+						inserts = ExecuteUpdate(connection,updateSql,updatePars);
+						System.out.println("更新1个用户的关注者！");
 					}
 					else if(!follows.contains(userModel.getFollows())){
 						String newFollows = follows + "," + userModel.getFollows();
@@ -292,15 +294,16 @@ public class MySQLDBHelper {
 						Object[] updatePars = { newFollows,
 												userModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
+						System.out.println("更新1个用户的关注者！");
 					}
 				}
 				else{
 					String updateSql = "update user set follows = ? where id = ?";
 					Object[] updatePars = { userModel.getFollows(),
 											userModel.getId()};
-					inserts = ExecuteUpdate(connection,updateSql,updatePars);	
-				}
-				System.out.println("更新1个用户！");
+					inserts = ExecuteUpdate(connection,updateSql,updatePars);
+					System.out.println("更新1个用户的关注者！");
+				}				
 			}
 			else{
 				String updateSql = "insert into user (id, follows) values (?, ?)";
@@ -354,7 +357,7 @@ public class MySQLDBHelper {
 						                weiboModel.getPlatform(),
 						                weiboModel.getId()};
 				inserts = ExecuteUpdate(connection,updateSql,insertPars);
-				System.out.println("更新1条微博！");
+				System.out.println("更新1条微博的基本信息！");
 			}
 		} catch (Exception sqlE) {
 			// TODO Auto-generated catch block
@@ -385,13 +388,14 @@ public class MySQLDBHelper {
 						Object[] updatePars = { weiboModel.getRepostusers(),
 												weiboModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
-						System.out.println("更新1条微博！");
+						System.out.println("更新1条微博的转发者！");
 					}else if(!repostUsers.contains(weiboModel.getRepostusers())){
 						String newRepostUsers = repostUsers + "," + weiboModel.getRepostusers();
 						String updateSql = "update weibo set repostusers = ? where id = ?";
 						Object[] updatePars = { newRepostUsers,
 												weiboModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
+						System.out.println("更新1条微博的转发者！");
 					}
 				}
 				else{
@@ -399,7 +403,7 @@ public class MySQLDBHelper {
 					Object[] updatePars = { weiboModel.getRepostusers(),
 											weiboModel.getId()};
 					inserts = ExecuteUpdate(connection,updateSql,updatePars);
-					System.out.println("更新1条微博！");
+					System.out.println("更新1条微博的转发者！");
 				}
 			}
 			else{
@@ -438,7 +442,7 @@ public class MySQLDBHelper {
 						Object[] updatePars = { weiboModel.getCommentusers(),
 												weiboModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
-						System.out.println("更新1条微博！");
+						System.out.println("更新1条微博的评论者！");
 					}
 					else if(!commentUsers.contains(weiboModel.getCommentusers())){
 						String newCommentUsers = commentUsers + "," + weiboModel.getCommentusers();
@@ -446,6 +450,7 @@ public class MySQLDBHelper {
 						Object[] updatePars = { newCommentUsers,
 												weiboModel.getId()};
 						inserts = ExecuteUpdate(connection,updateSql,updatePars);
+						System.out.println("更新1条微博的评论者！");
 					}
 				}
 				else{
@@ -453,7 +458,7 @@ public class MySQLDBHelper {
 					Object[] updatePars = { weiboModel.getCommentusers(),
 											weiboModel.getId()};
 					inserts = ExecuteUpdate(connection,updateSql,updatePars);
-					System.out.println("更新1条微博！");
+					System.out.println("更新1条微博的评论者！");
 				}
 			}
 			else{
