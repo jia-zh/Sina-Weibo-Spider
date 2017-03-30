@@ -54,7 +54,7 @@ public class WeiboCrawler extends BreadthCrawler {
     public static void loadProxy() {
     	BufferedReader read=null;    	    
     	try {
-    		URL realurl=new URL("http://127.0.0.1:8000/?types=0&count=90&country=%E5%9B%BD%E5%86%85");
+    		URL realurl=new URL("http://127.0.0.1:8000/?types=0&count=200&country=%E5%9B%BD%E5%86%85");
     		URLConnection connection=realurl.openConnection();
 	        connection.setRequestProperty("accept", "*/*");
 	        connection.setRequestProperty("connection", "Keep-Alive");
@@ -219,13 +219,13 @@ public class WeiboCrawler extends BreadthCrawler {
 		        	String transfer = interInforsList[1].substring(interInforsList[1].indexOf("[")+1, interInforsList[1].indexOf(']'));
 		        	if(Integer.parseInt(transfer) > 0){
 			        	for (int i = 1; i <= Integer.parseInt(transfer) / 9 + 1; i++) {
-			        		next.add(new CrawlDatum("http://weibo.cn/repost/" + weiboId + "?uid=" + userID + "&page=" + i).putMetaData("weiboID", weiboId));	
+			        		next.add(new CrawlDatum("http://weibo.cn/repost/" + weiboId + "?uid=" + userID + "&page=" + i).putMetaData("weiboID", weiboId).putMetaData("userID", userID));	
 						}		        	
 		        	}
 		        	String comment = interInforsList[2].substring(interInforsList[2].indexOf("[")+1, interInforsList[2].indexOf(']'));
 		        	if(Integer.parseInt(comment) > 0){
 			        	for (int i = 1; i <= Integer.parseInt(comment) / 10 + 1; i++) {
-			        		next.add(new CrawlDatum("http://weibo.cn/comment/" + weiboId + "?uid=" + userID + "&page=" + i).putMetaData("weiboID", weiboId));	
+			        		next.add(new CrawlDatum("http://weibo.cn/comment/" + weiboId + "?uid=" + userID + "&page=" + i).putMetaData("weiboID", weiboId).putMetaData("userID", userID));	
 						}
 		        	}
 		        	String pubInfors = weibo.select("div>div>span[class='ct']").text(); //时间和使用工具（手机或平台）		        	
@@ -292,7 +292,7 @@ public class WeiboCrawler extends BreadthCrawler {
 	        	String repostUsers = reposts.select("div.c").get(i).select("a").get(0).text();
 	        	if(!repostUsers.contains("返回") || !repostUsers.contains("查看更多热门")){
 		        	WeiboModel weiboModel = new WeiboModel();
-		            weiboModel.setId(weiboId);
+		            weiboModel.setId(userID + weiboId);
 		            weiboModel.setRepostusers(repostUsers);
 		            MySQLDBHelper.inserWeiboRepostUsers(connection, weiboModel);
 	        	}
@@ -306,7 +306,7 @@ public class WeiboCrawler extends BreadthCrawler {
         		String commentUsers = comments.select("div.c").get(i).select("a").get(0).text();
         		if(!commentUsers.contains("返回") || !commentUsers.contains("查看更多热门")){
     	        	WeiboModel weiboModel = new WeiboModel();
-    	            weiboModel.setId(weiboId);
+    	            weiboModel.setId(userID + weiboId);
     	            weiboModel.setCommentusers(commentUsers);
     	            MySQLDBHelper.inserWeiboCommentUsers(connection, weiboModel); 	
         		}
