@@ -11,5 +11,6 @@ JDK，WebCollector，MySQL
 对于IPProxyPool的相关需求，请参考对于的开源项目。
 
 # Attention
-1、由于微博中含有4个字节的符号，需要将MySQL的编码格式设置为utf8mb4.
+1、由于微博中含有4个字节的符号，需要将MySQL的编码格式设置为utf8mb4。
+
 2、由于在持久化的过程中需要一定的内存，需要采用-Xms，-Xmx设置堆内存。
