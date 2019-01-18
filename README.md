@@ -1,4 +1,4 @@
-# SinaWeiboSpider
+# Sina Weibo Spider
 基于WebCollector的新浪微博爬虫，以MySQL作为持久化存储。
 
 采用WebCollector的 Berkeley DB（BreadthCrawler)的插件：适合处理长期和大量级的任务，并具有断点爬取功能，不会因为宕机、关闭导致数据丢失。
