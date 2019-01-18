@@ -7,7 +7,7 @@
 
 对于微博登录cookie，需要提前获取大量用户的cookie，存储在项目根目录的cookies文件中，程序进行动态调用切换。对于微博账号，可以直接从某宝上购买，对于账号的cookie获取，可以参考项目中的WeiboCN.java文件的方式。
 
-对于代理IP的获取，本项目采用开源程序IPProxyPool（ https://github.com/jia-zh/IPProxyPool ），程序进行动态调用切换。
+对于代理IP的获取，本项目采用开源程序[IPProxyPool](https://github.com/qiyeboy/IPProxyPool)，程序进行动态调用切换。
 
 # Requirements
 JDK，WebCollector，MySQL
